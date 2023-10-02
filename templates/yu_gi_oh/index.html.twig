@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dernières ventes de cartes Yu-Gi-Oh sur eBay</h1>
+    <ul>
+        {% for item in data.findCompletedItemsResponse[0].searchResult[0].item %}
+            <li>{{ item.title[0] }} - Vendu pour {{ item.sellingStatus[0].currentPrice[0].__value__ }} {{ item.sellingStatus[0].currentPrice[0]['@currencyId'] }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
